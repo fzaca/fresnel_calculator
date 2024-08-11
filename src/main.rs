@@ -1,8 +1,17 @@
-use eframe::egui::{self, Align, Color32, Layout, RichText, TextStyle, Visuals};
-use eframe::{App, Frame};
+use eframe::egui::{self, Align, Color32, Layout, RichText, TextStyle, Vec2, Visuals};
+use eframe::{App, Frame, NativeOptions};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let options = eframe::NativeOptions::default();
+    let window_size = Vec2::new(400.0, 500.0);
+
+    let options = NativeOptions {
+        resizable: false,
+        initial_window_size: Some(window_size),
+        min_window_size: Some(window_size),
+        max_window_size: Some(window_size),
+        ..Default::default()
+    };
+
     eframe::run_native(
         "Fresnel Zone Calculator",
         options,
@@ -145,10 +154,7 @@ impl App for MyApp {
                 ui.add_space(30.0);
 
                 // Footer with developer info and softer text color
-                ui.colored_label(
-                    Color32::from_rgb(180, 180, 180),
-                    "Developed by: github.com/fzaca",
-                );
+                ui.colored_label(Color32::from_rgb(180, 180, 180), "Developed by: Your Name");
                 ui.add_space(20.0);
             });
         });
