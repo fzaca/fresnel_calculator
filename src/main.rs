@@ -131,7 +131,7 @@ impl MyApp {
                 ui.add_space(10.0);
 
                 ui.add(
-                    egui::Slider::new(&mut self.frequency_ghz, 0.1..=100.0)
+                    egui::Slider::new(&mut self.frequency_ghz, 0.1..=50.0)
                         .text("")
                         .clamp_to_range(true)
                         .logarithmic(true),
@@ -161,7 +161,7 @@ impl MyApp {
             // Display result with enhanced text style
             if let Some(fz) = self.fresnel_zone {
                 ui.label(
-                    RichText::new(format!("Fresnel Zone (F1) [m]: {:.2}", fz))
+                    RichText::new(format!("Fresnel Zone: {:.2}m", fz))
                         .size(24.0)
                         .color(Color32::from_rgb(0, 255, 0))
                         .text_style(TextStyle::Button),
